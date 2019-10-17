@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ item.title }}
+            {% for image in item.images %}
+                <img src="{{ image }}" alt="{{ title }}"/>
+            {% endfor -%}
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{- item.baseline -}}</h6>
+        <p class="card-text">{{- item.description -}}</p>
+        <small class="float-right">
+            <i class="fas fa-user-astronaut"></i> {{ item.roles|join(', ') }}<br/>
+            {%- if item.sponsors is defined -%}
+                <i class="fas fa-hand-holding-usd"></i> {{ item.sponsors|map(sponsor => "<a href='"~sponsor.link~"' target='_blank'>"~sponsor.name~"</a>")|join(', ')|raw }}
+            {%- endif -%}
+        </small>
+        <small>
+            <a href="{{ link }}" target="_blank" class="card-link" title="{{ item.title }}"><i class="fab fa-github"></i>&nbsp;Project</a>
+            <a href="{{ item.documentation is defined ? item.documentation : link }}" target="_blank" class="card-link" title="{{ item.title }} Documentation"><i class="fas fa-book"></i>&nbsp;Documentation</a>
+            {%- if item.video is defined -%}
+                <a href="{{ item.video }}" target="_blank" class="card-link" title="{{ item.title }} Video"><i class="fas fa-video"></i>&nbsp;Video</a>
+            {%- endif -%}
+            {%- if item.media is defined -%}
+                <a href="{{ item.media }}" target="_blank" class="card-link" title="{{ item.title }} Video"><i class="fas fa-rss"></i>&nbsp;Article</a>
+            {%- endif -%}
+        </small>
+
+
+    </div>
+</div>
