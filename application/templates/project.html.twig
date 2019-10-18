@@ -8,9 +8,9 @@
         <h6 class="card-subtitle mb-2 text-muted">{{- item.baseline -}}</h6>
         <p class="card-text">{{- item.description -}}</p>
         <small class="float-right">
-            <i class="fas fa-user-astronaut"></i> {{ item.roles|join(', ') }}<br/>
+            <i class="fas fa-user-astronaut" title="My Role(s)"></i> {{ item.roles|join(', ') }}<br/>
             {%- if item.sponsors is defined -%}
-                <i class="fas fa-hand-holding-usd"></i> {{ item.sponsors|map(sponsor => "<a href='"~sponsor.link~"' target='_blank'>"~sponsor.name~"</a>")|join(', ')|raw }}
+                <i class="fas fa-hand-holding-usd" title="Current Sponsor(s)"></i> {{ item.sponsors|map(sponsor => "<a href='"~sponsor.link~"' target='_blank'>"~sponsor.name~"</a>")|join(', ')|raw }}
             {%- endif -%}
         </small>
         <small>
