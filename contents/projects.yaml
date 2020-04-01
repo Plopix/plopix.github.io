@@ -29,6 +29,18 @@ https://github.com/eZsystems/launchpad:
         - "https://img.shields.io/github/release/ezsystems/launchpad.svg?style=flat-square"
 
 
+https://github.com/Plopix/js-console-wrapper:
+    roles:
+        - Creator
+        - Maintainer
+    title: "Plopix JS Console"
+    baseline: A beautiful Console.log wrapper
+    description: Wrapper of console.log that enables output depending on a Verbosity level. It also brings color and manage compability.
+    images:
+        - "https://img.shields.io/github/release/Plopix/js-console-wrapper.svg?style=flat-square"
+        - "https://img.shields.io/npm/dt/@plopix/js-console"
+        - "https://img.shields.io/npm/l/@plopix/js-console?style=flat-square"
+
 https://github.com/Plopix/symfony-bundle-app-wrapper:
     roles:
         - Creator
@@ -36,7 +48,8 @@ https://github.com/Plopix/symfony-bundle-app-wrapper:
     title: "Symfony Bundle App Wrapper"
     baseline: This script helps you to automate a Symfony application installation around a bundle
     description: It is useful when to want to automate an application deployment from a bundle repository.
-
+    images:
+        - "https://img.shields.io/github/license/plopix/symfony-bundle-app-wrapper?style=flat-square"
 
 https://github.com/Plopix/docker-mysqlproxyprofiler:
     roles:
@@ -88,7 +101,8 @@ https://github.com/Novactive/NovaCollection:
     description: Collection implementation that wraps regular PHP arrays. Forget foreach and embrace functional programming.
     images:
         - "https://img.shields.io/packagist/dt/novactive/collection.svg?style=flat-square"
-        - "https://img.shields.io/packagist/l/novactive/collection.svg?style=flat-square"
+        - "https://img.shields.io/github/license/novactive/NovaCollection?style=flat-square"
+
 
 https://github.com/Novactive/NovaeZProtectedContentBundle:
     roles:
