@@ -28,6 +28,20 @@ https://github.com/eZsystems/launchpad:
     images:
         - "https://img.shields.io/github/release/ezsystems/launchpad.svg?style=flat-square"
 
+https://github.com/Novactive/NovaeZAccelerator:
+    roles:
+        - Creator
+        - Maintainer
+    sponsors:
+        - { name: Novactive, link: "https://www.novactive.us" }
+    title: "Nova eZ Accelerator"
+    baseline: Performance optimizations bundle for eZ Platform
+    description: Brings Asynchronicity using Symfony Messenger.
+    documentation: "https://novactive.github.io/NovaeZAccelerator"
+    images:
+        - "https://img.shields.io/github/release/Novactive/NovaeZAccelerator.svg?style=flat-square"
+        - "https://img.shields.io/packagist/dt/novactive/ezaccelerator.svg?style=flat-square"
+        - "https://img.shields.io/packagist/l/novactive/ezaccelerator.svg?style=flat-square"
 
 https://github.com/Plopix/js-console-wrapper:
     roles:
