@@ -2,7 +2,8 @@ name: Update Github Page
 on:
     schedule:
         -   cron: '42 2 * * *'
-
+    workflow_dispatch: ~
+    
 jobs:
     update:
         name: Re Generate pages
