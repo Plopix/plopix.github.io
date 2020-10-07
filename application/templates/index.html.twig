@@ -1,9 +1,9 @@
 {% extends "base.html.twig" %}
 {% block content %}
     <div class="row list">
-        {% for link,project in projects -%}
+        {% for project in projects -%}
             <div class="col-md-6">
-                {% include  "project.html.twig" with { item: project, link:link } %}
+                {% include  "project.html.twig" with { item: project } %}
             </div>
         {%- endfor %}
     </div>

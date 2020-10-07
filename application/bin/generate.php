@@ -1,11 +1,22 @@
 <?php
 declare(strict_types=1);
 
-use Symfony\Component\Yaml\Yaml;
+use Contentful\Delivery\Query;
+use Twig\Environment;
 
 include __DIR__."/../bootstrap.php";
 
+/** @var Environment $twig */
 $template = $twig->load('index.html.twig');
+
+/** @var Contentful\Delivery\Client\ClientInterface $contentfulClient */
+
+$query = new Query();
+$query->setContentType('openSourceProject');
+
 print $template->render(
-    ['projects' => Yaml::parseFile(__DIR__."/../../contents/projects.yaml")]
+    [
+        'projects' => $contentfulClient->getEntries($query),
+        'person' => $contentfulClient->getEntry('8Tt1bk4SABZNz1LHtF1FN')
+    ]
 );

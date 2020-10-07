@@ -1,26 +1,33 @@
+{% set link = 'https://'~item.repositoryOrganization.type~'.com/'~item.repositoryOrganization.name~'/'~item.repositoryName %}
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">{{ item.title }}
-            {% for image in item.images %}
-                <img src="{{ image }}" alt="{{ title }}"/>
-            {% endfor -%}
+            <img src="https://img.shields.io/{{ item.repositoryOrganization.type }}/release/{{ item.repositoryOrganization.name }}/{{ item.repositoryName }}.svg?style=flat-square" alt="{{ title }}" />
+            {% if item.packagePlatformId is not empty %}
+                {% if item.packagePlatform == 'composer' %}
+                    <img src="https://img.shields.io/packagist/dt/{{ item.packagePlatformId }}.svg?style=flat-square" alt="{{ title }}" />
+                    <img src="https://img.shields.io/packagist/l/{{ item.packagePlatformId }}.svg?style=flat-square" alt="{{ title }}" />
+                {% endif %}
+                {% if item.packagePlatform == 'npm' %}
+                    <img src="https://img.shields.io/npm/dt/{{ item.packagePlatformId }}?style=flat-square" alt="{{ title }}" />
+                    <img src="https://img.shields.io/npm/l/{{ item.packagePlatformId }}?style=flat-square" alt="{{ title }}" />
+                    <img src="" alt="{{ title }}" />
+                {% endif %}
+            {% endif %}
         </h5>
         <h6 class="card-subtitle mb-2 text-muted">{{- item.baseline -}}</h6>
         <p class="card-text">{{- item.description -}}</p>
         <small class="float-right">
-            <i class="fas fa-user-astronaut" title="My Role(s)"></i> {{ item.roles|join(', ') }}<br/>
-            {%- if item.sponsors is defined -%}
-                <i class="fas fa-hand-holding-usd" title="Current Sponsor(s)"></i> {{ item.sponsors|map(sponsor => "<a href='"~sponsor.link~"' target='_blank'>"~sponsor.name~"</a>")|join(', ')|raw }}
+            <i class="fas fa-user-astronaut" title="My Role(s)"></i> {{ item.roles|join(', ') }}<br />
+            {%- if item.sponsors is not empty -%}
+                <i class="fas fa-hand-holding-usd" title="Current Sponsor(s)"></i> {{ item.sponsors|map(sponsor => "<a href='"~sponsor.url~"' target='_blank'>"~sponsor.name~"</a>")|join(', ')|raw }}
             {%- endif -%}
         </small>
         <small>
             <a href="{{ link }}" target="_blank" class="card-link" title="{{ item.title }}"><i class="fab fa-github"></i>&nbsp;Project</a>
-            <a href="{{ item.documentation is defined ? item.documentation : link }}" target="_blank" class="card-link" title="{{ item.title }} Documentation"><i class="fas fa-book"></i>&nbsp;Documentation</a>
-            {%- if item.video is defined -%}
-                <a href="{{ item.video }}" target="_blank" class="card-link" title="{{ item.title }} Video"><i class="fas fa-video"></i>&nbsp;Video</a>
-            {%- endif -%}
-            {%- if item.media is defined -%}
-                <a href="{{ item.media }}" target="_blank" class="card-link" title="{{ item.title }} Video"><i class="fas fa-rss"></i>&nbsp;Article</a>
+            <a href="{{ item.urlDocumentation is not empty ? item.urlDocumentation : link }}" target="_blank" class="card-link" title="{{ item.title }} Documentation"><i class="fas fa-book"></i>&nbsp;Documentation</a>
+            {%- if item.publications is not empty -%}
+                {{ item.publications|map(publication => "<a href='"~publication.url~"' target='_blank' class='card-link' title='"~publication.name~"'><i class='fas fa-"~(publication.type=='video'?'video':'rss')~"'></i> "~publication.type|capitalize~"</a>")|join('')|raw }}
             {%- endif -%}
         </small>
 
