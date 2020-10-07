@@ -2,11 +2,15 @@
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">{{ item.title }}
-            <img src="https://img.shields.io/{{ item.repositoryOrganization.type }}/release/{{ item.repositoryOrganization.name }}/{{ item.repositoryName }}.svg?style=flat-square" alt="{{ title }}" />
+            <img src="https://img.shields.io/{{ item.repositoryOrganization.type }}/v/release/{{ item.repositoryOrganization.name }}/{{ item.repositoryName }}.svg?style=flat-square" alt="{{ title }}" />
             {% if item.packagePlatformId is not empty %}
                 {% if item.packagePlatform == 'composer' %}
                     <img src="https://img.shields.io/packagist/dt/{{ item.packagePlatformId }}.svg?style=flat-square" alt="{{ title }}" />
                     <img src="https://img.shields.io/packagist/l/{{ item.packagePlatformId }}.svg?style=flat-square" alt="{{ title }}" />
+                {% endif %}
+                {% if item.packagePlatform == 'github' %}
+                    <img src="https://img.shields.io/github/downloads/{{ item.repositoryOrganization.name }}/{{ item.repositoryName }}/total?style=flat-square" alt="{{ title }}" />
+                    <img src="https://img.shields.io/github/license/{{ item.repositoryOrganization.name|lower }}/{{ item.repositoryName }}?style=flat-square" alt="{{ title }}" />
                 {% endif %}
                 {% if item.packagePlatform == 'npm' %}
                     <img src="https://img.shields.io/npm/dt/{{ item.packagePlatformId }}?style=flat-square" alt="{{ title }}" />
