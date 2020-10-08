@@ -2,7 +2,9 @@
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">{{ item.title }}
-            <img src="https://img.shields.io/{{ item.repositoryOrganization.type }}/v/release/{{ item.repositoryOrganization.name }}/{{ item.repositoryName }}.svg?style=flat-square" alt="{{ title }}" />
+            {% if item.released == true %}
+                <img src="https://img.shields.io/{{ item.repositoryOrganization.type }}/v/release/{{ item.repositoryOrganization.name }}/{{ item.repositoryName }}.svg?style=flat-square" alt="{{ title }}" />
+            {% endif %}
             {% if item.packagePlatformId is not empty %}
                 {% if item.packagePlatform == 'composer' %}
                     <img src="https://img.shields.io/packagist/dt/{{ item.packagePlatformId }}.svg?style=flat-square" alt="{{ title }}" />
