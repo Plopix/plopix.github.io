@@ -8,18 +8,15 @@
             {% if item.packagePlatformId is not empty %}
                 {% if item.packagePlatform == 'composer' %}
                     <img src="https://img.shields.io/packagist/dt/{{ item.packagePlatformId }}.svg?style=flat-square" alt="{{ title }}" />
-                    <img src="https://img.shields.io/packagist/l/{{ item.packagePlatformId }}.svg?style=flat-square" alt="{{ title }}" />
                 {% endif %}
                 {% if item.packagePlatform == 'github' %}
                     <img src="https://img.shields.io/github/downloads/{{ item.repositoryOrganization.name }}/{{ item.repositoryName }}/total?style=flat-square" alt="{{ title }}" />
-                    <img src="https://img.shields.io/github/license/{{ item.repositoryOrganization.name|lower }}/{{ item.repositoryName }}?style=flat-square" alt="{{ title }}" />
                 {% endif %}
                 {% if item.packagePlatform == 'npm' %}
                     <img src="https://img.shields.io/npm/dt/{{ item.packagePlatformId }}?style=flat-square" alt="{{ title }}" />
-                    <img src="https://img.shields.io/npm/l/{{ item.packagePlatformId }}?style=flat-square" alt="{{ title }}" />
-                    <img src="" alt="{{ title }}" />
                 {% endif %}
             {% endif %}
+            <img src="https://img.shields.io/github/license/{{ item.repositoryOrganization.name|lower }}/{{ item.repositoryName }}?style=flat-square" alt="{{ title }}" />
         </h5>
         <h6 class="card-subtitle mb-2 text-muted">{{- item.baseline -}}</h6>
         <p class="card-text">{{- item.description -}}</p>
