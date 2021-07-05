@@ -9,6 +9,12 @@
     <title>{{ person.handle|capitalize }} Open Source Projects</title>
     <meta name="description" content="{{ myName }} list of proudly maintained Open Source Projects">
     <style type="text/css">
+        .header {
+            padding-top: 0;
+            padding-bottom: 0;
+
+        }
+
         .card-body a.card-link {
             margin-left: 0;
             margin-right: 0.5rem;
@@ -31,7 +37,7 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <div class="header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <div class="header px-3 pt-md-5 mx-auto text-center">
                 <h1 class="display-4">{{ person.name }}</h1>
                 <p class="lead">{{ person.jobTitle }}
                     {% for company in person.companies %}
@@ -42,10 +48,24 @@
             </div>
         </div>
         <div class="col-4">
-            <div class="header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <div class="header px-3 pt-md-5 mx-auto text-center">
                 <img src="https://github.githubassets.com/images/modules/site/sponsors/logo-mona.svg" alt="Mona holding a heart" width="150" /><br />
                 <p>You can now
                     <a href="{{ person.sponsoringLink }}" target="_blank">sponsor me</a> on Github!</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="d-flex">
+                <div class="align-self-center">
+                    #certified
+                </div>
+                {% for certif in certifications %}
+                    <div class="align-self-center">
+                        <img src="{{ certif.image.file.url }}" alt="{{ certif.name }}" width="200" />
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

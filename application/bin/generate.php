@@ -11,12 +11,16 @@ $template = $twig->load('index.html.twig');
 
 /** @var Contentful\Delivery\Client\ClientInterface $contentfulClient */
 
-$query = new Query();
-$query->setContentType('openSourceProject');
+$projectQuery = new Query();
+$projectQuery->setContentType('openSourceProject');
+
+$certificationQuery = new Query();
+$certificationQuery->setContentType('certification');
 
 print $template->render(
     [
-        'projects' => $contentfulClient->getEntries($query),
+        'projects' => $contentfulClient->getEntries($projectQuery),
+        'certifications' => $contentfulClient->getEntries($certificationQuery),
         'person' => $contentfulClient->getEntry('8Tt1bk4SABZNz1LHtF1FN')
     ]
 );
