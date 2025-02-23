@@ -1,0 +1,75 @@
+---
+import type { Post } from "../../content/config";
+import { Image } from "astro:assets";
+import { StaticImages } from "../../core/images";
+
+const { title, description, publishedAt, publisher, image, slug } =
+  Astro.props as Post & { slug: string };
+---
+
+<div class="group">
+  <article class="flex-1 h-full flex flex-col">
+    <a
+      class="aspect-[384/200] overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-700"
+      href={publisher?.canonical || slug}
+      title={title}
+      target={publisher?.canonical ? "_blank" : "_self"}
+    >
+      {
+        image && image.url.startsWith("static://") && (
+          <Image
+            src={
+              StaticImages[
+                image.url.replace("static://", "") as keyof typeof StaticImages
+              ]
+            }
+            alt={image.alt}
+            loading={"lazy"}
+            class="object-cover object-center group-hover:scale-125 duration-500 ease-in-out"
+          />
+        )
+      }
+      {
+        image && image.url.startsWith("http") && (
+          <img
+            src={image.url}
+            alt={image.alt}
+            loading={"lazy"}
+            class="object-cover object-center group-hover:scale-125 duration-500 ease-in-out"
+          />
+        )
+      }
+    </a>
+
+    <div class="flex flex-col items-start justify-between flex-1 w-full mt-4">
+      <div>
+        <a
+          class="text-lg font-semibold leading-6 std-paragraph"
+          href={publisher?.canonical || slug}
+          title={title}
+          target={publisher?.canonical ? "_blank" : "_self"}
+        >
+          {title}
+        </a>
+        <p
+          class="mt-2 text-sm leading-6 text-neutral-500 dark:text-neutral-400 line-clamp-6"
+        >
+          {description}
+        </p>
+      </div>
+      <footer>
+        <div class="inline-flex space-x-1 items-center mt-2">
+          <p class="text-xs font-medium text-neutral-900 dark:text-white">
+            Published on {publisher?.name || "here"}
+          </p>
+          <span aria-hidden="true">&middot;</span>
+          <div class="flex text-xs text-neutral-400">
+            <time datetime={publishedAt.toISOString()}>
+              {publishedAt.toISOString().slice(0, 10)}</time
+            >
+          </div>
+        </div>
+      </footer>
+    </div>
+  </article>
+</div>

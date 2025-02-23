@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@plugin "tailwind-scrollbar-hide";
+@layer components {
+    .prose-styles {
+        @apply prose text-neutral-500 dark:text-neutral-400 prose-headings:text-neutral-900 dark:prose-headings:text-white prose-blockquote:text-main-400 dark:prose-blockquote:text-main-300 dark:prose-blockquote:border-blue-400 prose-img:border dark:prose-img:border-neutral-700 prose-img:rounded-lg dark:prose-code:text-white prose-a:text-main-400 hover:prose-a:text-main-500 prose-a:duration-200 dark:prose-strong:text-white max-w-none prose-pre:border;
+    }
+
+    .std-paragraph {
+        @apply text-neutral-900 dark:text-white group-hover:text-main-400;
+    }
+    .std-description {
+        @apply text-neutral-500 dark:text-neutral-400 text-justify;
+    }
+
+    .std-page-container {
+        @apply mx-auto max-w-4xl px-8 py-12;
+    }
+}
+@theme {
+    /* Typography*/
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    /* Colors */
+    /* Blue Shades */
+    --color-main-50: #fff4e5;
+    --color-main-100: #ffe4bf;
+    --color-main-200: #ffd08c;
+    --color-main-300: #ffb85c;
+    --color-main-400: #ffa533;
+    --color-main-500: #ff9900; /* Base Color */
+    --color-main-600: #e68900;
+    --color-main-700: #bf6e00;
+    --color-main-800: #995700;
+    --color-main-900: #734100;
+    --color-main-950: #402300;
+}
+
+@supports (font-variation-settings: normal) {
+    /* Use variable font if supported */
+    :root {
+        font-family: InterVariable, sans-serif;
+    }
+}
+
+:root {
+    /* Typography*/
+    font-family: Inter, sans-serif;
+    font-feature-settings:
+        'liga' 1,
+        'calt' 1,
+        /* Contextual Alternates */ 'dlig' 1,
+        /* Discretionary Ligatures */ 'ss07' 1,
+        /* fSquare punctuation */ 'ss08' 1,
+        /* Square quotes */ 'zero' 1,
+        /* Slashed zero */ 'tnum' 1,
+        /* Tabular numbers */ 'cv03',
+        /* Open six */ 'cv04' 1,
+        /* Open nine */ 'cv01' 1,
+        /* Alternate one */ 'cv09',
+        /* Flat-top three */ 'cv02' 1; /* Open 4 */
+    /* style code blocks*/
+    --astro-code-color-text: #000000;
+    --astro-code-background: #ffffff;
+    --astro-code-token-constant: #00000080;
+    --astro-code-token-string: #00000050;
+    --astro-code-token-comment: #00000060;
+    --astro-code-token-keyword: black;
+    --astro-code-token-parameter: #ffffff;
+    --astro-code-token-function: black;
+    --astro-code-token-string-expression: #0000ff;
+    --astro-code-token-punctuation: #ffffff;
+    --astro-code-token-link: #ffffff;
+}

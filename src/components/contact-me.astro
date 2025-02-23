@@ -1,0 +1,33 @@
+---
+import { me } from "../core/constants";
+import CrystallizeLogo from "../assets/crystallize.svg";
+import { Image } from "astro:assets";
+---
+
+<div class="flex flex-wrap gap-2 mt-6">
+  <a
+    class="inline-flex items-center gap-2 justify-center rounded-lg py-3 px-6 text-sm outline-offset-2 transition bg-white text-black font-medium hover:bg-neutral-50 dark:text-white dark:bg-neutral-800/50 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 group w-full lg:w-auto border dark:border-white/20 border-neutral-200"
+    href={me.linkedin}
+    target="_blank"
+    title={me.firstName + " " + me.lastName}
+    aria-label={me.firstName + " " + me.lastName}
+  >
+    Contact me
+  </a>
+
+  <a
+    class="inline-flex items-center gap-2 justify-center rounded-lg py-3 px-6 text-sm outline-offset-2 transition bg-white text-black font-medium hover:bg-neutral-50 dark:text-white dark:bg-neutral-800/50 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 group w-full lg:w-auto border dark:border-white/20 border-neutral-200"
+    href={me.companyUrl}
+    title="Crystallize"
+    target="_blank"
+    aria-label="Crystallize"
+  >
+    <Image
+      src={CrystallizeLogo}
+      alt="Crystallize"
+      loading="eager"
+      width="20"
+      height="20"
+    />Contact me about Crystallize
+  </a>
+</div>

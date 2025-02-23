@@ -1,0 +1,42 @@
+---
+import { me } from "../core/constants";
+import BaseLayout from "../layouts/base-layout.astro";
+import { workExperiences } from "../core/work-experience";
+import WorkExperience from "../components/experience.astro";
+---
+
+<BaseLayout
+  title="Professional experience & career journey"
+  description=`Explore ${me.firstName} ${me.lastName}'s professional experience, from tech leadership to software development and architecture. Discover the roles, projects, and expertise that shaped my career.`
+>
+  <section>
+    <div class="std-page-container">
+      <h1
+        class="text-2xl font-medium text-balance tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
+      >
+        My journey through tech & innovation
+      </h1>
+      <p class="mt-4 std-description">
+        Over the years, I've had the privilege of working across <strong>
+          various industries
+        </strong>, technologies, and <strong>teams</strong>, shaping products,
+        scaling architectures, and solving complex challenges. From <strong>
+          hands-on engineering
+        </strong> to <strong>technical leadership</strong>, every role has
+        contributed to my expertise. Here's a look at my <strong>
+          professional experience</strong
+        >.
+      </p>
+
+      <div class="mt-4 divide-y">
+        {
+          workExperiences.map((experience, index) => (
+            <div class="grid grid-cols-1 mt-4 lg:grid-cols-3 gap-12 items-start py-12 border-t dark:border-neutral-700">
+              <WorkExperience {...experience} {index} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

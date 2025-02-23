@@ -1,0 +1,43 @@
+---
+import { me, seo } from "../core/constants";
+import { SEO } from "astro-seo";
+const { title, description, canonical, image } = Astro.props;
+
+const finalTitle = title
+  ? `${title} - ${me.firstName} ${me.lastName}`
+  : `${me.firstName} ${me.lastName} - ${me.jobTitle} at ${me.company}`;
+const finalDescription = description || seo.default.description;
+const finalCanonical = `${canonical || Astro.url || seo.default.site}`.replace(
+  /\/$/,
+  ""
+);
+const finalImage = image || seo.default.image;
+---
+
+<SEO
+  title={finalTitle}
+  description={finalDescription}
+  canonical={finalCanonical}
+  openGraph={{
+    basic: {
+      title: seo.default.title,
+      url: finalCanonical,
+      type: "website",
+      image: finalImage,
+    },
+    optional: {
+      siteName: finalCanonical,
+      locale: "en_US",
+    },
+  }}
+  twitter={{
+    creator: "@plopix",
+    site: finalCanonical,
+    card: "summary_large_image",
+    description: finalDescription,
+    image: finalImage,
+  }}
+/>
+<meta name="author" content={`${me.firstName} ${me.lastName}`} />
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />

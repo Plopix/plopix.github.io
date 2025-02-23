@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import type { Certification as TCertification } from "../contracts/certification";
+
+const { issuer, logo, title, issuedAt, credential, index } =
+  Astro.props as TCertification & {
+    index: number;
+  };
+
+const text = `${issuedAt} ${credential?.id ? `${issuedAt ? "- " : ""}${credential?.id}` : ""}`;
+---
+
+<div class="flex items-center gap-x-4">
+  <Image
+    src={logo}
+    alt={issuer}
+    loading={"eager"}
+    class="size-10 rounded-xl dark:border dark:border-neutral-700"
+  />
+  <div class="text-sm leading-6">
+    <p class="font-semibold text-black dark:text-white">
+      {title}
+    </p>
+    <small class="text-neutral-500 text-xs dark:text-neutral-400">
+      {
+        credential?.url ? (
+          <a
+            href={credential.url}
+            title={title}
+            aria-label={title}
+            target="_blank"
+            class="hover:text-main-500"
+          >
+            {text}
+          </a>
+        ) : (
+          <>{text}</>
+        )
+      }
+    </small>
+  </div>
+</div>

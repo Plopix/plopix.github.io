@@ -1,0 +1,28 @@
+---
+import type { Award } from "../contracts/award";
+
+const { title, description, issuedAt, issuer } = Astro.props as Award;
+---
+
+<div class="flex-1 h-full flex flex-col">
+  <div class="inline-flex space-x-1 items-center">
+    <p class="text-xs font-medium text-neutral-900 dark:text-white">
+      {issuer}
+    </p>
+    <span aria-hidden="true">&middot;</span>
+    <div class="flex text-xs text-neutral-400">
+      <span>{issuedAt}</span>
+    </div>
+  </div>
+  <div class="">
+    <p class="text-lg font-semibold leading-6 std-paragraph">
+      {title}
+    </p>
+
+    <p
+      class="mt-2 text-sm leading-6 text-neutral-500 dark:text-neutral-400 line-clamp-3"
+    >
+      {description}
+    </p>
+  </div>
+</div>

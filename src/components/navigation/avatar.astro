@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import picture from "../../assets/plopix.png";
+import { me } from "../../core/constants";
+const { pathname } = Astro.url;
+---
+
+<a href="/" class="group block flex-shrink-0 cursor-pointer">
+  <div class="flex items-center">
+    <div>
+      <Image
+        loading="eager"
+        src={picture}
+        alt={`${me.firstName} ${me.lastName}`}
+        class="inline-block h-16 w-16 ring-1 ring-black dark:ring-white/10 grayscale filter rounded-full"
+      />
+    </div>
+    {
+      pathname === "/" ? (
+        <div class="ml-3">
+          <h1 class="text-sm font-medium std-paragraph group-hover:opacity-80 flex flex-col">
+            {me.firstName}
+            {me.lastName}
+            <small class="text-xs font-medium text-neutral-500 dark:text-white group-hover:text-main-400 group-hover:opacity-80">
+              {me.jobTitle}
+              <br />@{me.company}
+            </small>
+          </h1>
+        </div>
+      ) : (
+        <div class="ml-3">
+          <p class="text-sm font-medium std-paragraph group-hover:opacity-80">
+            {me.firstName}
+            {me.lastName}
+          </p>
+          <p class="text-xs font-medium text-neutral-500 dark:text-white group-hover:text-main-400 group-hover:opacity-80">
+            {me.jobTitle}
+            <br />@{me.company}
+          </p>
+        </div>
+      )
+    }
+  </div>
+</a>

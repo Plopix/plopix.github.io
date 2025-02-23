@@ -1,0 +1,114 @@
+---
+import { Image } from "astro:assets";
+import type { Experience as TExperience } from "../contracts/experience";
+
+const { company, positions, index } = Astro.props as TExperience & {
+  index: number;
+};
+const monthlist = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+---
+
+<div
+  class="text-lg font-semibold leading-6 std-paragraph flex flex-col items-center gap-2"
+>
+  {
+    typeof company.logo === "string" && (
+      <img
+        src={company.logo}
+        alt={company.name}
+        class="size-20"
+        loading={index < 2 ? "eager" : "lazy"}
+      />
+    )
+  }
+  {
+    typeof company.logo !== "string" && typeof company.logo !== "undefined" && (
+      <Image
+        src={company.logo}
+        alt={company.name}
+        class="size-20"
+        loading={index < 2 ? "eager" : "lazy"}
+      />
+    )
+  }
+
+  {
+    company.url && (
+      <a
+        href={company.url}
+        title={company.name}
+        aria-label={company.name}
+        class="hover:text-main-400 text-center"
+        target="_blank"
+      >
+        {company.name}
+      </a>
+    )
+  }
+  {!company.url && <p class="text-center">{company.name}</p>}
+</div>
+<ul role="list" class="flex flex-col gap-y-6 lg:col-span-2">
+  {
+    positions.map((position) => {
+      const [startYear, startMonth] = position.range.from
+        .split("-")
+        .map(Number);
+
+      const now = new Date();
+      const [endYear, endMonth] = position.range.to
+        ? position.range.to.split("-").map(Number)
+        : [now.getFullYear(), now.getMonth() + 1];
+
+      let years = endYear - startYear;
+      let months = endMonth - startMonth;
+      if (months < 0) {
+        years -= 1;
+        months += 12;
+      }
+      return (
+        <li class="flow-root">
+          <small class="float-right text-neutral-500 dark:text-neutral-400 text-right">
+            {monthlist[startMonth - 1]} {startYear} -
+            {position.range.to
+              ? `${monthlist[endMonth - 1]} ${endYear}`
+              : "Present"}
+            <br />
+            {years > 0 && `${years} year${years > 1 ? "s" : ""}`}
+            {months > 0 && `${months} month${months > 1 ? "s" : ""}`}
+          </small>
+          <p class="font-semibold leading-6 std-paragraph">
+            {position.title}
+            <br />
+            <small class="text-neutral-500 dark:text-neutral-400">
+              {position.location} - {position.type}
+            </small>
+          </p>
+          <p class="text-neutral-500 mt-4 dark:text-neutral-400">
+            {position.description}
+          </p>
+
+          <ul class="list-disc ml-6 mt-4">
+            {position.bullets.map((highlight) => (
+              <li class="text-neutral-500 dark:text-neutral-400">
+                {highlight}
+              </li>
+            ))}
+          </ul>
+        </li>
+      );
+    })
+  }
+</ul>

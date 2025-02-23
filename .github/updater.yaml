@@ -1,0 +1,39 @@
+name: Deploy to GitHub Pages
+
+on:
+    schedule:
+        - cron: '5 4 * * 0,2,4,5'
+    push:
+        branches: [master]
+    workflow_dispatch:
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: ⬇️ Checkout repo
+              uses: actions/checkout@v4
+
+            - name: 🏄 Install, build, and upload
+              uses: withastro/action@v3
+              with:
+                  path: .
+                  node-version: 22
+                  package-manager: pnpm@latest
+
+    deploy:
+        name: 🚀 Deploy to GitHub Pages
+        needs: build
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: 🚢 Ship it
+              id: deployment
+              uses: actions/deploy-pages@v4

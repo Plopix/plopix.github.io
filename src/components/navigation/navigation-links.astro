@@ -1,0 +1,80 @@
+---
+// Define navigation data
+const navigationItems = [
+  {
+    title: "About me",
+    items: [
+      { href: "/", text: "Home", imgSrc: "/navigation-icons/home.svg" },
+      {
+        href: "/experience",
+        text: "Experience",
+        imgSrc: "/navigation-icons/work.svg",
+      },
+      {
+        href: "/certifications",
+        text: "Certifications & Honors",
+        imgSrc: "/navigation-icons/certification.svg",
+      },
+      {
+        href: "/education",
+        text: "Education",
+        imgSrc: "/navigation-icons/education.svg",
+      },
+
+      {
+        href: "/publications",
+        text: "Publications",
+        imgSrc: "/navigation-icons/blog.svg",
+      },
+      {
+        href: "/projects",
+        text: "Projects",
+        imgSrc: "/navigation-icons/studio.svg",
+      },
+      {
+        href: "/talks",
+        text: "Talks & Livestreams",
+        imgSrc: "/navigation-icons/speech.svg",
+      },
+
+      {
+        href: "/stack",
+        text: "Stack",
+        imgSrc: "/navigation-icons/stack.svg",
+      },
+      {
+        href: "/about/socials",
+        text: "Socials",
+        imgSrc: "/navigation-icons/socials.svg",
+      },
+    ],
+  },
+];
+---
+
+<div>
+  {
+    navigationItems.map((section) => (
+      <div class="px-8 py-4 space-y-4">
+        <p class="text-sm font-semibold uppercase text-black dark:text-white">
+          {section.title}
+        </p>
+        {section.items.map((item) => (
+          <a
+            href={item.href}
+            class="flex items-center text-sm text-neutral-500 hover:text-main-500 dark:text-neutral-50 group duration-200  gap-3"
+          >
+            <img
+              class="size-4 dark:invert"
+              src={item.imgSrc}
+              alt={item.text}
+              aria-label={item.text}
+              title={item.text}
+            />
+            {item.text}
+          </a>
+        ))}
+      </div>
+    ))
+  }
+</div>

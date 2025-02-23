@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/base-layout.astro";
+import PostPreview from "../../components/blog/post-preview.astro";
+import { me } from "../../core/constants";
+const allPosts = await getCollection("posts");
+---
+
+<BaseLayout
+  tile="Publications, Articles & Tech Insights"
+  description=`Discover ${me.firstName} ${me.lastName}'s publications—insights on software architecture, performance optimization, DevOps, and tech leadership. Read in-depth articles, tutorials, and industry perspectives.`
+>
+  <section>
+    <div class="std-page-container">
+      <p
+        class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
+      >
+        Publications
+      </p>
+      <p class="mt-4 std-description">
+        Writing is a way to <strong>share knowledge</strong>, document insights,
+        and <strong>contribute to the tech community</strong>. Here, you'll find
+        my <strong>articles</strong>, <strong>blog posts</strong>, and
+        <strong>publications</strong> on <strong>software architecture</strong>, <strong
+          >devOps</strong
+        >, development, performance optimization, and leadership. Whether it's
+        deep dives into <strong>technical concepts</strong>, industry trends, or
+        practical guides, these writings reflect my passion for technology and
+        innovation.
+      </p>
+
+      <ul
+        role="list"
+        class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-12 mt-6 border-t border-neutral-200 dark:border-neutral-700 pt-6"
+      >
+        {
+          allPosts
+            .sort((a, b) => {
+              const dateA = new Date(a.data.publishedAt).getTime();
+              const dateB = new Date(b.data.publishedAt).getTime();
+              return dateB - dateA;
+            })
+            .map((post) => (
+              <li>
+                <PostPreview {...post.data} slug={post.slug} />
+              </li>
+            ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
