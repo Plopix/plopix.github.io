@@ -1,64 +1,49 @@
 ---
-import type { Post } from "../../content/config";
-import { Image } from "astro:assets";
-import { StaticImages } from "../../core/images";
+import type { Post } from '../../content/config';
+import { Image } from 'astro:assets';
+import { StaticImages } from '../../core/images';
 
-const { title, description, publishedAt, publisher, image, slug } =
-  Astro.props as Post & { slug: string };
+const { title, description, publishedAt, publisher, image, slug } = Astro.props as Post & { slug: string };
 ---
 
 <div class="group">
-  <div class="flex items-center gap-x-4">
-    <a
-      href={publisher?.canonical || slug}
-      title={title}
-      target={publisher?.canonical ? "_blank" : "_self"}
-    >
-      {
-        image && image.url.startsWith("static://") && (
-          <Image
-            src={
-              StaticImages[
-                image.url.replace("static://", "") as keyof typeof StaticImages
-              ]
+    <div class="flex items-center gap-x-4">
+        <a href={publisher?.canonical || slug} title={title} target={publisher?.canonical ? '_blank' : '_self'}>
+            {
+                image && image.url.startsWith('static://') && (
+                    <Image
+                        src={StaticImages[image.url.replace('static://', '') as keyof typeof StaticImages]}
+                        alt={image.alt}
+                        loading={'lazy'}
+                        class="h-12 rounded-xl dark:border dark:border-neutral-700"
+                    />
+                )
             }
-            alt={image.alt}
-            loading={"lazy"}
-            class="h-12 rounded-xl dark:border dark:border-neutral-700"
-          />
-        )
-      }
-      {
-        image && image.url.startsWith("http") && (
-          <img
-            src={image.url}
-            alt={image.alt}
-            loading={"lazy"}
-            class="h-12 rounded-xl dark:border dark:border-neutral-700"
-          />
-        )
-      }
-    </a>
-    <div class="text-sm leading-6">
-      <p
-        class="font-semibold text-black dark:text-white group-hover:text-blue-400 duration-200 line-clamp-1"
-      >
-        <a
-          href={publisher?.canonical || slug}
-          title={title}
-          target={publisher?.canonical ? "_blank" : "_self"}>{title}</a
-        >
-      </p>
-      <p class="text-neutral-500 text-sm dark:text-neutral-400">
-        <time datetime={publishedAt.toISOString()}>
-          {publishedAt.toISOString().slice(0, 10)}</time
-        >
-      </p>
+            {
+                image && image.url.startsWith('http') && (
+                    <Image
+                        src={image.url}
+                        alt={image.alt}
+                        loading={'lazy'}
+                        width={100}
+                        height={50}
+                        class="h-12 rounded-xl dark:border dark:border-neutral-700"
+                    />
+                )
+            }
+        </a>
+        <div class="text-sm leading-6">
+            <p class="font-semibold text-black dark:text-white group-hover:text-blue-400 duration-200 line-clamp-1">
+                <a href={publisher?.canonical || slug} title={title} target={publisher?.canonical ? '_blank' : '_self'}
+                    >{title}</a
+                >
+            </p>
+            <p class="text-neutral-500 text-sm dark:text-neutral-400">
+                <time datetime={publishedAt.toISOString()}> {publishedAt.toISOString().slice(0, 10)}</time>
+            </p>
+        </div>
     </div>
-  </div>
-  <p
-    class="text-neutral-500 mt-4 dark:text-neutral-400 line-clamp-3 text-justify"
-  >
-    {description}
-  </p>
+    <p class="text-neutral-500 mt-4 dark:text-neutral-400 line-clamp-3 text-justify">
+        {description}
+    </p>
 </div>

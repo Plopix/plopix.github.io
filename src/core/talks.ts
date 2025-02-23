@@ -113,7 +113,7 @@ export const talks: Talk[] = [
             name: 'eZ Conference 2018',
         },
         location: 'Kohln, Germany',
-        slides: '/slides/ez-conf-2018.pdf',
+        slides: '/slides/ezconf-2018.pdf',
         images: [StaticImages.ezconf2018],
     },
     {
@@ -138,7 +138,7 @@ export const talks: Talk[] = [
             name: 'eZ Conference 2015',
         },
         location: 'New York, USA',
-        slides: '/slides/ez-conf-2015.pdf',
+        slides: '/slides/ezconf-2015.pdf',
         images: [StaticImages.ezconf20151, StaticImages.ezconf20152],
     },
     {

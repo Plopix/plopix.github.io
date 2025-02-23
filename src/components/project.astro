@@ -1,98 +1,96 @@
 ---
-import type { Project } from "../contracts/project";
+import type { Project } from '../contracts/project';
 
 const {
-  title,
-  baseline,
-  description,
-  packagePlatform,
-  packagePlatformId,
-  repositoryName,
-  repositoryOrganization,
-  isReleased,
-  roles,
-  sponsors,
+    title,
+    baseline,
+    description,
+    packagePlatform,
+    packagePlatformId,
+    repositoryName,
+    repositoryOrganization,
+    isReleased,
+    roles,
+    sponsors,
 } = Astro.props as Project;
-const badgeClass = "max-h-[20px] object-contain block";
+const badgeClass = 'max-h-[20px] object-contain block';
 ---
 
 <div class="group">
-  <div class="flex items-center gap-4">
-    <div class="flex flex-col gap-1 items-start">
-      {
-        isReleased && (
-          <img
-            class={badgeClass}
-            src={`https://img.shields.io/${repositoryOrganization.type}/v/release/${repositoryOrganization.name}/${repositoryName}.svg?style=flat-square`}
-            alt={title}
-          />
-        )
-      }
-      {
-        packagePlatformId && packagePlatform === "composer" && (
-          <img
-            class={badgeClass}
-            src={`https://img.shields.io/packagist/dt/${packagePlatformId}.svg?style=flat-square`}
-            alt={title}
-          />
-        )
-      }
-      {
-        packagePlatformId && packagePlatform === "github" && (
-          <img
-            class={badgeClass}
-            src={`https://img.shields.io/github/downloads/${repositoryOrganization.name}/${repositoryName}/total?style=flat-square`}
-            alt={title}
-          />
-        )
-      }
-      {
-        packagePlatformId && packagePlatform === "npm" && (
-          <img
-            class={badgeClass}
-            src={`https://img.shields.io/npm/dt/${packagePlatformId}?style=flat-square`}
-            alt={title}
-          />
-        )
-      }
-      <img
-        class={badgeClass}
-        src={`https://img.shields.io/github/license/${repositoryOrganization.name}/${repositoryName}?style=flat-square`}
-        alt={title}
-      />
+    <div class="flex items-center gap-4">
+        <div class="flex flex-col gap-1 items-start">
+            {
+                isReleased && (
+                    <img
+                        class={badgeClass}
+                        src={`https://img.shields.io/${repositoryOrganization.type}/v/release/${repositoryOrganization.name}/${repositoryName}.svg?style=flat-square`}
+                        alt={title}
+                    />
+                )
+            }
+            {
+                packagePlatformId && packagePlatform === 'composer' && (
+                    <img
+                        class={badgeClass}
+                        src={`https://img.shields.io/packagist/dt/${packagePlatformId}.svg?style=flat-square`}
+                        alt={title}
+                    />
+                )
+            }
+            {
+                packagePlatformId && packagePlatform === 'github' && (
+                    <img
+                        class={badgeClass}
+                        src={`https://img.shields.io/github/downloads/${repositoryOrganization.name}/${repositoryName}/total?style=flat-square`}
+                        alt={title}
+                    />
+                )
+            }
+            {
+                packagePlatformId && packagePlatform === 'npm' && (
+                    <img
+                        class={badgeClass}
+                        src={`https://img.shields.io/npm/dt/${packagePlatformId}?style=flat-square`}
+                        alt={title}
+                    />
+                )
+            }
+            <img
+                class={badgeClass}
+                src={`https://img.shields.io/github/license/${repositoryOrganization.name}/${repositoryName}?style=flat-square`}
+                alt={title}
+            />
+        </div>
+        <div>
+            <p class="font-semibold text-main-400 group-hover:text-main-400 duration-200">
+                {title}
+            </p>
+            <p class="text-neutral-500 text-sm dark:text-neutral-400">
+                {baseline}
+            </p>
+        </div>
     </div>
-    <div>
-      <p
-        class="font-semibold text-main-400 group-hover:text-main-400 duration-200"
-      >
-        {title}
-      </p>
-      <p class="text-neutral-500 text-sm dark:text-neutral-400">
-        {baseline}
-      </p>
-    </div>
-  </div>
-  <p class="text-neutral-500 mt-4 dark:text-neutral-400 text-justify">
-    {description}
-  </p>
-  <footer>
-    <div class="inline-flex space-x-1 items-center mt-2">
-      {
-        sponsors.length > 0 && (
-          <p class="text-xs font-medium text-neutral-900 dark:text-white">
-            Sponsored by{" "}
-            {sponsors.map((sponsor) => (
-              <a href={sponsor.url} target="_blank" class="hover:text-main-400">
-                {sponsor.name}
-              </a>
-            ))}
-          </p>
-        )
-      }
-      {sponsors.length > 0 && <span aria-hidden="true">&middot;</span>}
-      <div class="flex text-xs text-main-700">
-        {roles.join(", ")}
-      </div>
-    </div>
-  </footer>
+    <p class="text-neutral-500 mt-4 dark:text-neutral-400 text-justify">
+        {description}
+    </p>
+    <footer>
+        <div class="inline-flex space-x-1 items-center mt-2">
+            {
+                sponsors.length > 0 && (
+                    <p class="text-xs font-medium text-neutral-900 dark:text-white">
+                        Sponsored by{' '}
+                        {sponsors.map((sponsor) => (
+                            <a href={sponsor.url} target="_blank" class="hover:text-main-400">
+                                {sponsor.name}
+                            </a>
+                        ))}
+                    </p>
+                )
+            }
+            {sponsors.length > 0 && <span aria-hidden="true">&middot;</span>}
+            <div class="flex text-xs text-main-700">
+                {roles.join(', ')}
+            </div>
+        </div>
+    </footer>
 </div>

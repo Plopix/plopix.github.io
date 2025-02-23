@@ -1,74 +1,71 @@
 ---
-import { Image } from "astro:assets";
-import type { Talk } from "../../contracts/talk";
-import Carousel from "../carousel.astro";
+import { Image } from 'astro:assets';
+import type { Talk } from '../../contracts/talk';
+import Carousel from '../carousel.astro';
 
-const { title, description, date, images, location, event, slides, video } =
-  Astro.props as Talk;
+const { title, description, date, images, location, event, slides, video } = Astro.props as Talk;
 
 const link = video || slides;
 ---
 
 <div class="group">
-  <article class="flex-1 h-full flex flex-col">
-    <div
-      class="aspect-[384/200] overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-700"
-    >
-      {
-        images.length === 1 && (
-          <Image
-            src={images[0]}
-            alt={title}
-            loading="lazy"
-            class="object-cover object-center group-hover:scale-125 duration-500 ease-in-out"
-          />
-        )
-      }
-      {images.length > 1 && <Carousel title={title} images={images} />}
-    </div>
+    <article class="flex-1 h-full flex flex-col">
+        <div class="aspect-[384/200] overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-700">
+            {
+                images.length === 1 && (
+                    <Image
+                        src={images[0]}
+                        alt={title}
+                        loading="lazy"
+                        class="object-cover object-center group-hover:scale-125 duration-500 ease-in-out"
+                    />
+                )
+            }
+            {images.length > 1 && <Carousel title={title} images={images} />}
+        </div>
 
-    <div class="flex flex-col items-start justify-between flex-1 w-full mt-4">
-      <div>
-        <a
-          class="text-lg font-semibold leading-2 std-paragraph"
-          href={link}
-          title={title}
-          target="_blank"
-        >
-          {title}
-        </a>
-        <p
-          class="mt-2 text-sm leading-4 text-neutral-500 dark:text-neutral-400 line-clamp-6 text-justify"
-        >
-          {description}
-        </p>
-      </div>
-      <footer class="flex space-x-1 items-center mt-2 justify-between w-full">
-        <p class="text-xs font-medium text-neutral-900 dark:text-white">
-          {
-            event?.url ? (
-              <>
-                <a href={event.url} target="_blank" class="hover:text-main-400">
-                  {event.name}
+        <div class="flex flex-col items-start justify-between flex-1 w-full mt-4">
+            <div>
+                <a class="text-lg font-semibold leading-2 std-paragraph" href={link} title={title} target="_blank">
+                    {title}
                 </a>
-                <br />
-                <span class="text-neutral-400">{location}</span>
-              </>
-            ) : event ? (
-              <span>
-                {event.name}
-                <br />
-                <span class="text-neutral-400">{location}</span>
-              </span>
-            ) : (
-              <span class="text-neutral-400">{location}</span>
-            )
-          }
-          <div class="flex text-xs text-neutral-400">
-            {date}
-          </div>
-        </p>
-      </footer>
-    </div>
-  </article>
+                <p class="mt-2 text-sm leading-4 text-neutral-500 dark:text-neutral-400 line-clamp-6 text-justify">
+                    {description}
+                </p>
+            </div>
+            <footer class="flex space-x-1 items-center mt-2 justify-between w-full">
+                <p class="text-xs font-medium text-neutral-900 dark:text-white">
+                    {
+                        event?.url ? (
+                            <>
+                                <a href={event.url} target="_blank" class="hover:text-main-400">
+                                    {event.name}
+                                </a>
+                                <br />
+                                <span class="text-neutral-400">{location}</span>
+                            </>
+                        ) : event ? (
+                            <span>
+                                {event.name}
+                                <br />
+                                <span class="text-neutral-400">{location}</span>
+                            </span>
+                        ) : (
+                            <span class="text-neutral-400">{location}</span>
+                        )
+                    }
+                    <div class="flex flex-col text-xs text-neutral-400">
+                        {date}
+                        <a
+                            href={slides}
+                            target="_blank"
+                            class="text-neutral-200 text-right hover:text-main-400 text-xs"
+                        >
+                            View slides
+                        </a>
+                    </div>
+                </p>
+            </footer>
+        </div>
+    </article>
 </div>

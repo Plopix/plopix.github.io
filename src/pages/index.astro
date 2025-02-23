@@ -1,201 +1,182 @@
 ---
-import ContactMe from "../components/contact-me.astro";
-import { me } from "../core/constants";
-import BaseLayout from "../layouts/base-layout.astro";
-import { getCollection } from "astro:content";
-const allPosts = await getCollection("posts");
-import LinePostPreview from "../components/blog/line-post-preview.astro";
-import MissivePush from "../components/missive-push.astro";
-import { talks } from "../core/talks";
-import LineTalk from "../components/blog/line-talk.astro";
-import { fetchBadges } from "../core/badges";
-import { shuffleArray } from "../core/utility-functions";
-import { Image } from "astro:assets";
+import ContactMe from '../components/contact-me.astro';
+import { me } from '../core/constants';
+import BaseLayout from '../layouts/base-layout.astro';
+import { getCollection } from 'astro:content';
+const allPosts = await getCollection('posts');
+import LinePostPreview from '../components/blog/line-post-preview.astro';
+import MissivePush from '../components/missive-push.astro';
+import { talks } from '../core/talks';
+import LineTalk from '../components/blog/line-talk.astro';
+import { fetchBadges } from '../core/badges';
+import { shuffleArray } from '../core/utility-functions';
+import { Image } from 'astro:assets';
 const badges = shuffleArray(await fetchBadges());
 ---
 
 <BaseLayout title="Home">
-  <section>
-    <div class="std-page-container">
-      <h2
-        class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
-      >
-        Driving Innovation and accelerating growth through tech leadership.
-      </h2>
-      <p class="mt-4 std-description">
-        I'm {me.firstName}, aka <strong>Plopix</strong>, I live in California,
-        and I come from France. I am <strong>passionate technologist</strong>, <strong
-          >architect</strong
-        >, and <strong>problem-solver</strong> with a
-        <strong>deep focus on scalability</strong>, <strong>performance</strong
-        >, <strong>DevOps</strong>, and <strong>system architecture</strong>. I
-        thrive on <strong>optimizing systems</strong>, <strong
-          >refining processes</strong
-        >, and <strong>pushing the boundaries of technology—whether</strong> through
-        clean architecture, continuous deployment, or high-performance solutions.
-      </p>
-      <p
-        class="mt-4 text-neutral-500 dark:text-neutral-400 lg:text-pretty text-justify"
-      >
-        This is my space to share my experience, projects, and thoughts on the
-        ever-evolving tech landscape. Welcome!
-      </p>
-      <ContactMe />
-    </div>
-  </section>
-
-  <section>
-    <div class="mx-auto max-w-4xl px-8">
-      <h3
-        class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
-      >
-        Latest publications
-      </h3>
-      <ul
-        class="grid md:grid-cols-2 mt-4 gap-12 gap-y-4 gap-x-6 border-t dark:border-neutral-700 pt-12"
-      >
-        {
-          allPosts
-            .sort((a, b) => {
-              const dateA = new Date(a.data.publishedAt).getTime();
-              const dateB = new Date(b.data.publishedAt).getTime();
-              return dateB - dateA;
-            })
-            .slice(0, 4)
-            .map((post) => (
-              <li class="flow-root">
-                <LinePostPreview {...post.data} slug={post.slug} />
-              </li>
-            ))
-        }
-      </ul>
-      <div
-        class="flex flex-wrap border-t border-neutral-200 justify-end dark:border-neutral-700 pt-6 mt-6"
-      >
-        <a
-          class="text-sm text-neutral-500 hover:text-blue-400 dark:text-neutral-50 group duration-200"
-          href="/publications"
-        >
-          Read all publications &rarr;
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="mx-auto max-w-4xl px-8 my-6">
-      <h3
-        class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
-      >
-        Latest talks & livestreams
-      </h3>
-      <ul
-        class="grid md:grid-cols-2 mt-4 gap-12 gap-y-4 gap-x-6 border-t dark:border-neutral-700 pt-12"
-      >
-        {
-          talks.slice(0, 4).map((talk) => (
-            <li class="flow-root">
-              <LineTalk {...talk} />
-            </li>
-          ))
-        }
-      </ul>
-      <div
-        class="flex flex-wrap border-t border-neutral-200 justify-end dark:border-neutral-700 pt-6 mt-6"
-      >
-        <a
-          class="text-sm text-neutral-500 hover:text-blue-400 dark:text-neutral-50 group duration-200"
-          href="/talks"
-        >
-          See all talks & livestreams &rarr;
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <MissivePush />
-  <section>
-    <div class="std-page-container">
-      <h3
-        class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
-      >
-        Some stats
-      </h3>
-      <p
-        class="mt-4 text-neutral-500 dark:text-neutral-400 lg:text-pretty text-justify border-t dark:border-neutral-700 pt-4"
-      >
-        Here are some stats about my contributions and coding habits.
-      </p>
-
-      <div class="flex flex-wrap gap-2 mt-6 items-center">
-        <a href="https://github.com/plopix" target="_blank"
-          ><img
-            alt="Plopix's Github stats"
-            src="https://github-readme-stats.vercel.app/api?username=plopix&count_private=true&show_icons=true&hide_title=true"
-          /></a
-        >
-        <div>
-          <img
-            width="320"
-            alt="Plopix's Wakatime Languages"
-            src="https://wakatime.com/share/@plopix/9548f056-f696-41fe-8266-b025f19192c6.svg"
-            class="rounded-lg mb-2"
-          />
-          <img
-            width="320"
-            alt="Plopix's Wakatime Times"
-            src="https://wakatime.com/share/@plopix/91750824-23bb-417c-9e17-d9ee0869eda2.svg"
-            class="rounded-lg"
-          />
+    <section>
+        <div class="std-page-container">
+            <h2 class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+                Driving Innovation and accelerating growth through tech leadership.
+            </h2>
+            <p class="mt-4 std-description">
+                I'm {me.firstName}, aka <strong>Plopix</strong>, I live in California, and I come from France. I am <strong
+                    >passionate technologist</strong
+                >, <strong>architect</strong>, and <strong>problem-solver</strong> with a
+                <strong>deep focus on scalability</strong>, <strong>performance</strong>, <strong>DevOps</strong>, and <strong
+                    >system architecture</strong
+                >. I thrive on <strong>optimizing systems</strong>, <strong>refining processes</strong>, and <strong
+                    >pushing the boundaries of technology—whether</strong
+                > through clean architecture, continuous deployment, or high-performance solutions.
+            </p>
+            <p class="mt-4 text-neutral-500 dark:text-neutral-400 lg:text-pretty text-justify">
+                This is my space to share my experience, projects, and thoughts on the ever-evolving tech landscape.
+                Welcome!
+            </p>
+            <ContactMe />
         </div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="std-page-container">
-      <h3
-        class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
-      >
-        Badges!
-      </h3>
-      <p
-        class="mt-4 text-neutral-500 dark:text-neutral-400 lg:text-pretty text-justify border-t dark:border-neutral-700 pt-4"
-      >
-        We all want to show off our achievements, right? Here are some badges I
-        earned over the years.
-      </p>
+    </section>
 
-      <ul class="flex flex-wrap gap-2 mt-6 items-center">
-        {
-          badges.map((badge) => {
-            const image = () => {
-              if (typeof badge.url === "string") {
-                return (
-                  <img src={badge.url} alt={badge.title} class="w-32 h-32" />
-                );
-              }
-              if (typeof badge.url !== "string") {
-                return (
-                  <Image src={badge.url} alt={badge.title} class="w-32 h-32" />
-                );
-              }
-            };
-            if (!badge.link && badge.url) {
-              return image();
-            }
-            return (
-              <a
-                href={badge.link}
-                target="_blank"
-                class="hover:opacity-80"
-                title={badge.title}
-              >
-                {image()}
-              </a>
-            );
-          })
-        }
-      </ul>
-    </div>
-  </section>
+    <section>
+        <div class="mx-auto max-w-4xl px-8">
+            <h3 class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+                Latest publications
+            </h3>
+            <ul class="grid md:grid-cols-2 mt-4 gap-12 gap-y-4 gap-x-6 border-t dark:border-neutral-700 pt-12">
+                {
+                    allPosts
+                        .sort((a, b) => {
+                            const dateA = new Date(a.data.publishedAt).getTime();
+                            const dateB = new Date(b.data.publishedAt).getTime();
+                            return dateB - dateA;
+                        })
+                        .slice(0, 4)
+                        .map((post) => (
+                            <li class="flow-root">
+                                <LinePostPreview {...post.data} slug={post.slug} />
+                            </li>
+                        ))
+                }
+            </ul>
+            <div class="flex flex-wrap border-t border-neutral-200 justify-end dark:border-neutral-700 pt-6 mt-6">
+                <a
+                    class="text-sm text-neutral-500 hover:text-blue-400 dark:text-neutral-50 group duration-200"
+                    href="/publications"
+                >
+                    Read all publications &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="mx-auto max-w-4xl px-8 my-6">
+            <h3 class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+                Latest talks & livestreams
+            </h3>
+            <ul class="grid md:grid-cols-2 mt-4 gap-12 gap-y-4 gap-x-6 border-t dark:border-neutral-700 pt-12">
+                {
+                    talks.slice(0, 4).map((talk) => (
+                        <li class="flow-root">
+                            <LineTalk {...talk} />
+                        </li>
+                    ))
+                }
+            </ul>
+            <div class="flex flex-wrap border-t border-neutral-200 justify-end dark:border-neutral-700 pt-6 mt-6">
+                <a
+                    class="text-sm text-neutral-500 hover:text-blue-400 dark:text-neutral-50 group duration-200"
+                    href="/talks"
+                >
+                    See all talks & livestreams &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <MissivePush />
+    <section>
+        <div class="std-page-container">
+            <h3 class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl">Some stats</h3>
+            <p
+                class="mt-4 text-neutral-500 dark:text-neutral-400 lg:text-pretty text-justify border-t dark:border-neutral-700 pt-4"
+            >
+                Here are some stats about my contributions and coding habits.
+            </p>
+
+            <div class="flex flex-col gap-2 mt-6 items-center">
+                <a href="https://github.com/plopix" target="_blank" class="w-full md:w-1/2">
+                    <Image
+                        width={320}
+                        height={240}
+                        class="w-full"
+                        loading={'lazy'}
+                        alt="Plopix's Github stats"
+                        src="https://github-readme-stats.vercel.app/api?username=plopix&count_private=true&show_icons=true&hide_title=true"
+                    /></a
+                >
+                <Image
+                    width={320}
+                    height={240}
+                    loading={'lazy'}
+                    alt="Plopix's Wakatime Languages"
+                    src="https://wakatime.com/share/@plopix/9548f056-f696-41fe-8266-b025f19192c6.svg"
+                    class="rounded-lg mb-2 w-full md:w-1/2"
+                />
+                <Image
+                    width={320}
+                    height={240}
+                    loading={'lazy'}
+                    alt="Plopix's Wakatime Times"
+                    src="https://wakatime.com/share/@plopix/91750824-23bb-417c-9e17-d9ee0869eda2.svg"
+                    class="rounded-lg w-full md:w-1/2"
+                />
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="std-page-container">
+            <h3 class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl">Badges!</h3>
+            <p
+                class="mt-4 text-neutral-500 dark:text-neutral-400 lg:text-pretty text-justify border-t dark:border-neutral-700 pt-4"
+            >
+                We all want to show off our achievements, right? Here are some badges I earned over the years.
+            </p>
+
+            <ul class="flex flex-wrap gap-2 mt-6 items-center">
+                {
+                    badges
+                        .map((badge) => {
+                            const imageClass = 'w-12 h-12 md:w-24 md:h-24';
+                            const image = () => {
+                                if (typeof badge.url === 'string') {
+                                    return (
+                                        <Image
+                                            width={24}
+                                            height={24}
+                                            src={badge.url}
+                                            alt={badge.title}
+                                            class={imageClass}
+                                        />
+                                    );
+                                }
+                                if (typeof badge.url !== 'string') {
+                                    return <Image src={badge.url} alt={badge.title} class={imageClass} />;
+                                }
+                            };
+                            if (!badge.link && badge.url) {
+                                return image();
+                            }
+                            return (
+                                <a href={badge.link} target="_blank" class="hover:opacity-80" title={badge.title}>
+                                    {image()}
+                                </a>
+                            );
+                        })
+                        .map((badge) => <li class="flow-root">{badge}</li>)
+                }
+            </ul>
+        </div>
+    </section>
 </BaseLayout>
