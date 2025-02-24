@@ -13,8 +13,8 @@ export const educationExperiences: Experience[] = [
                 location: 'Paris, France',
                 type: 'Master',
                 range: {
-                    from: '2020-01',
-                    to: '2022-03',
+                    from: '2003-10',
+                    to: '2005-11',
                 },
                 description:
                     'Major in Security, Systems Networking and Telecommunications, Technical Project Management, Team Building, Web Development.',
