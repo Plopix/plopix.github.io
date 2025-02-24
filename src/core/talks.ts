@@ -22,6 +22,45 @@ export const upcomingTalks: Talk[] = [
 
 export const talks: Talk[] = [
     {
+        title: 'Introducing the new Crystallize CLI: Streamline your development workflow',
+        description:
+            "Explore the new Crystallize CLI and see how it simplifies tenant management, mass operations, and boilerplate setup. We'll demo key features like boilerplate installation, content model dumping, image uploads, and tenant creation to enhance your development experience.",
+        date: '2025-02-20',
+        event: {
+            name: 'Crystallize Channel',
+            url: 'https://www.youtube.com/c/crystallize',
+        },
+        location: 'Online',
+        video: 'https://youtube.com/live/QFD8lAsztkM',
+        images: [StaticImages.cli1, StaticImages.cli2],
+    },
+    {
+        title: 'Introducing the Discovery API - Powerful Search, Faceting & Filtering in Crystallize',
+        description:
+            'The Discovery API unlocks powerful semantic search, filtering, and faceting capabilities in Crystallize. In this livestream, we walk you through how to use browse, search, and autocomplete queries efficiently. Learn how to optimize data retrieval, implement faceted search, and structure results for better performance.',
+        date: '2025-02-06',
+        event: {
+            name: 'Crystallize Channel',
+            url: 'https://www.youtube.com/c/crystallize',
+        },
+        location: 'Online',
+        video: 'https://youtube.com/live/BZh4E7sqq3c',
+        images: [StaticImages.disco1, StaticImages.disco2],
+    },
+    {
+        title: 'Building a subscription accelerator part 1',
+        description:
+            "Join us for a deep dive into the Crystallize Subscription Commerce Accelerator, powered by Next.js. In this livestream, we'll guide you through the setup process in Crystallize, explore the code organization and flow, and showcase the complete customer journey. Learn how to manage subscription contracts, handle orders, and process payments seamlessly. Don't miss this hands-on demo designed to help you accelerate your subscription commerce chops.",
+        date: '2025-01-23',
+        event: {
+            name: 'Crystallize Channel',
+            url: 'https://www.youtube.com/c/crystallize',
+        },
+        location: 'Online',
+        video: 'https://youtube.com/live/IJH7u7LQMsI',
+        images: [StaticImages.subaccell1, StaticImages.subaccell2],
+    },
+    {
         title: 'Implementing a shopping cart with React 19',
         description:
             "Let's build a shopping cart with the new hooks from React 19. We will start with a simple implementation and slowly iterate our way through different React 19 features and hooks using Next.js.",

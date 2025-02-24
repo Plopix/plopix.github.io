@@ -22,6 +22,13 @@ import remixconf2 from '../assets/events/remixconf2022-2.png';
 import remixconf3 from '../assets/events/remixconf2022-3.png';
 import ezaccelerator from '../assets/events/ezaccelerator.png';
 
+import cli1 from '../assets/events/livestreams/c-cli-2-2025.jpg';
+import cli2 from '../assets/events/livestreams/c-cli-2-2025-2.png';
+import subaccell1 from '../assets/events/livestreams/sub-accelerator.jpg';
+import subaccell2 from '../assets/events/livestreams/sub-accelerator.png';
+import disco1 from '../assets/events/livestreams/disco-api.jpg';
+import disco2 from '../assets/events/livestreams/disco-2.png';
+
 import cloudflare from '../assets/stack-tools/cloudflare.png';
 import bun from '../assets/stack-tools/bun.svg';
 import reactRouterV7 from '../assets/stack-tools/react-router-v7.svg';
@@ -84,6 +91,14 @@ export const StaticImages = {
     sfphp1,
     sfphp2,
     ezaccelerator,
+
+    cli1,
+    cli2,
+
+    subaccell1,
+    subaccell2,
+    disco1,
+    disco2,
 
     cloudflare,
     bun,
