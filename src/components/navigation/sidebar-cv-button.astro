@@ -1,18 +1,39 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
+import { socials } from '../../core/constants';
 ---
 
-<a
-  class="flex flex-col items-center gap-2 justify-center rounded-lg py-3 px-6 text-sm outline-offset-2 transition bg-white text-black font-medium hover:bg-neutral-50 dark:text-white dark:bg-neutral-800/50 dark:hover:bg-neutral-800 dark:hover:text-main-400 hover:text-main-400 group w-full border dark:border-white/20 border-neutral-200"
-  href="https://github.com/users/Plopix/sponsorship"
-  target="_blank"
->
-  <Image
-    width={80}
-    height={80}
-    loading="lazy"
-    alt="Sponsor me on Github"
-    src="https://github.githubassets.com/images/modules/site/sponsors/logo-mona.svg"
-  />
-  Sponsor me on Github
-</a>
+<div class="flex flex-col w-full">
+    <a
+        class="flex flex-col items-center gap-2 justify-center rounded-lg py-3 px-6 text-sm outline-offset-2 transition bg-white text-black font-medium hover:bg-neutral-50 dark:text-white dark:bg-neutral-800/50 dark:hover:bg-neutral-800 dark:hover:text-main-400 hover:text-main-400 group w-full border dark:border-white/20 border-neutral-200"
+        href="https://github.com/users/Plopix/sponsorship"
+        target="_blank"
+    >
+        <Image
+            width={80}
+            height={80}
+            loading="lazy"
+            alt="Sponsor me on Github"
+            src="https://github.githubassets.com/images/modules/site/sponsors/logo-mona.svg"
+        />
+        Sponsor me on Github
+    </a>
+
+    <div class="flex justify-between mx-auto mt-2 w-1/2">
+        {
+            socials
+                .slice(0, 2)
+                .flatMap((socials) => socials.items)
+                .map((social) => (
+                    <a
+                        class="hover:text-main-400 duration-200 text-neutral-500 dark:text-neutral-400"
+                        title={social.name}
+                        aria-label={social.name}
+                        href={social.url}
+                    >
+                        <Image loading="lazy" alt={social.name} src={social.logo} class="size-6" />
+                    </a>
+                ))
+        }
+    </div>
+</div>
