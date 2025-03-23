@@ -1,0 +1,27 @@
+---
+import { ActivityCalendar, type Activity, type ThemeInput } from 'react-activity-calendar';
+import { Tooltip as ReactTooltip } from 'react-tooltip';
+import { cloneElement } from 'react';
+
+type ActivityDiagramProps = {
+    data: Array<Activity>;
+    theme?: ThemeInput;
+};
+const { data, theme } = Astro.props as ActivityDiagramProps;
+---
+
+<div class="w-full rounded-lg text-neutral-500 dark:text-neutral-400 pt-4">
+    <ActivityCalendar
+        renderBlock={(block, activity) =>
+            cloneElement(block, {
+                'data-tooltip-id': 'react-tooltip',
+                'data-tooltip-content': `${activity.count} activities on ${activity.date}`,
+            })}
+        data={data}
+        weekStart={1}
+        blockSize={10}
+        hideTotalCount
+        theme={theme}
+    />
+    <ReactTooltip id="react-tooltip" client:load />
+</div>

@@ -22,6 +22,19 @@ export const upcomingTalks: Talk[] = [
 
 export const talks: Talk[] = [
     {
+        title: 'How to build a CLI using React and Bun!',
+        description:
+            "Join us for a deep dive into building a CLI using React and Bun! In this livestream, we'll guide you through the setup process, explore the code organization and flow.",
+        date: '2025-03-02',
+        event: {
+            name: 'All Things Web',
+            url: 'https://www.youtube.com/@allthingsweb-dev',
+        },
+        location: 'Youtube Channel',
+        video: 'https://www.youtube.com/watch?v=qg0pvoDeoTU',
+        images: [StaticImages.atwcli],
+    },
+    {
         title: 'Introducing the new Crystallize CLI: Streamline your development workflow',
         description:
             "Explore the new Crystallize CLI and see how it simplifies tenant management, mass operations, and boilerplate setup. We'll demo key features like boilerplate installation, content model dumping, image uploads, and tenant creation to enhance your development experience.",

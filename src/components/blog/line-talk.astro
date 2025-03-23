@@ -44,9 +44,17 @@ const link = video || slides;
             </p>
             <p class="text-neutral-500 text-xs dark:text-neutral-400">
                 {date}
-                <a href={slides} target="_blank" class="text-neutral-200 text-right hover:text-main-400 text-xs">
-                    View slides
-                </a>
+                {
+                    slides && (
+                        <a
+                            href={slides}
+                            target="_blank"
+                            class="text-neutral-200 text-right hover:text-main-400 text-xs"
+                        >
+                            View slides
+                        </a>
+                    )
+                }
             </p>
         </div>
     </div>

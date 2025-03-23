@@ -73,3 +73,39 @@
     --astro-code-token-punctuation: #ffffff;
     --astro-code-token-link: #ffffff;
 }
+
+.react-activity-calendar__scroll-container {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #666;
+}
+
+.react-activity-calendar__calendar {
+    margin-bottom: 10px;
+}
+
+@keyframes threeRotations {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(1080deg);
+    }
+}
+.rotate-3 {
+    animation: threeRotations 5s linear 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeSlide {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+.animate-fadeSlide {
+    animation: fadeSlide 1s forwards 3s;
+}

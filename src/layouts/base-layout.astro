@@ -1,36 +1,81 @@
 ---
-import BaseHead from "../components/base-head.astro";
-import DesktopNav from "../components/navigation/desktop-nav.astro";
-import Footer from "../components/global/footer.astro";
-import MobileNav from "../components/navigation/mobile-nav.astro";
-import "../styles/global.css";
-import Seo from "../components/seo.astro";
+import BaseHead from '../components/base-head.astro';
+import DesktopNav from '../components/navigation/desktop-nav.astro';
+import Footer from '../components/global/footer.astro';
+import MobileNav from '../components/navigation/mobile-nav.astro';
+import '../styles/global.css';
+import Seo from '../components/seo.astro';
 const { title, description, canonical, image } = Astro.props;
 ---
 
 <html lang="en" class="scroll-smooth">
-  <head>
-    <Seo {title} {description} {canonical} {image} />
-    <BaseHead />
-  </head>
-  <body class="dark:bg-neutral-900 bg-white">
-    <div class="min-h-[640px] flex flex-col">
-      <div x-data="{ open: false }" @keydown.window.escape="open = false">
-        <DesktopNav />
-        <div class="relative z-0 flex flex-1 overflow-hidden">
-          <div
-            class="relative z-0 flex-1 overflow-y-auto focus:outline-none lg:pl-72 2xl:pl-0"
-          >
-            <MobileNav />
-            <div class="flex-1 mx-auto min-h-svh flex flex-col">
-              <main class="grow">
-                <slot />
-              </main>
-              <Footer />
+    <head>
+        <Seo {title} {description} {canonical} {image} />
+        <BaseHead />
+    </head>
+    <body class="dark:bg-neutral-900 bg-white">
+        <div class="min-h-[640px] flex flex-col">
+            <div x-data="{ open: false }" @keydown.window.escape="open = false">
+                <DesktopNav />
+                <div class="relative z-0 flex flex-1 overflow-hidden">
+                    <div class="relative z-0 flex-1 overflow-y-auto focus:outline-none lg:pl-72 2xl:pl-0">
+                        <MobileNav />
+                        <div class="flex-1 mx-auto min-h-svh flex flex-col">
+                            <main class="grow">
+                                <slot />
+                            </main>
+                            <Footer />
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </body>
+
+        <div
+            id="kc-window"
+            class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-8 bg-black border-4 border-[#39FF14] text-[#39FF14] font-mono text-2xl text-center z-50 shadow-[0_0_15px_#39FF14] hidden"
+            style="text-shadow: 0 0 5px #39FF14;"
+        >
+            <script is:inline>
+                const code = [
+                    'ArrowUp',
+                    'ArrowUp',
+                    'ArrowDown',
+                    'ArrowDown',
+                    'ArrowLeft',
+                    'ArrowRight',
+                    'ArrowLeft',
+                    'ArrowRight',
+                    'b',
+                    'a',
+                ];
+                let i = 0;
+
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === code[i]) {
+                        if (++i === code.length) {
+                            const win = document.getElementById('kc-window');
+                            win.classList.remove('hidden');
+                            win.classList.add('animate-fadeSlide');
+                            document.querySelectorAll('p, img, h1, h2, h3, h4, h5, h6, a, button').forEach((el) => {
+                                el.classList.remove('rotate-3');
+                                void el.offsetWidth;
+                                el.classList.add('rotate-3');
+                                el.addEventListener('animationend', function handler() {
+                                    el.classList.remove('rotate-3');
+                                    el.removeEventListener('animationend', handler);
+                                    win.classList.add('hidden');
+                                    win.classList.remove('animate-fadeSlide');
+                                });
+                            });
+                            win.innerHTML = `I am proud of you!<br />You must know me to have tried that!<br /><img src="/kc.jpg" alt="Konami Code" class="w-1/2 mx-auto mt-4 rounded-lg shadow-[0_0_15px_#39FF14]" />`;
+                            i = 0;
+                        }
+                    } else {
+                        i = 0;
+                    }
+                });
+            </script>
+        </div>
+    </body>
 </html>

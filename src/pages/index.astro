@@ -11,7 +11,12 @@ import LineTalk from '../components/blog/line-talk.astro';
 import { fetchBadges } from '../core/badges';
 import { shuffleArray } from '../core/utility-functions';
 import { Image } from 'astro:assets';
+import ActivityDiagram from '../components/activity-diagram.astro';
 const badges = shuffleArray(await fetchBadges());
+import { fetchGithubActivity } from '../core/activity/github';
+import { fetchChessComActivity } from '../core/activity/chess';
+const githubActivity = await fetchGithubActivity();
+const chessActivity = await fetchChessComActivity();
 ---
 
 <BaseLayout title="Home">
@@ -102,9 +107,30 @@ const badges = shuffleArray(await fetchBadges());
             <p
                 class="mt-4 text-neutral-500 dark:text-neutral-400 lg:text-pretty text-justify border-t dark:border-neutral-700 pt-4"
             >
-                Here are some stats about my contributions and coding habits.
+                Here are some stats about my contributions, coding habits and more...
             </p>
 
+            <h4 class="text-xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-3xl mt-6">
+                Github activity
+            </h4>
+            <ActivityDiagram
+                data={githubActivity}
+                itemName="activities"
+                theme={{ light: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'] }}
+            />
+
+            <h4 class="text-xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-3xl mt-6">
+                Chess.com activity
+            </h4>
+            <ActivityDiagram
+                data={chessActivity}
+                itemName="games"
+                theme={{ light: ['#161b22', '#7FA1B5', '#99B4C3', '#B2C7D2', '#D9E4E7'] }}
+            />
+
+            <h4 class="text-xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-3xl mt-6">
+                Other activities
+            </h4>
             <div class="flex flex-col gap-2 mt-6 items-center">
                 <a href="https://github.com/plopix" target="_blank" class="w-full md:w-1/2">
                     <Image

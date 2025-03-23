@@ -28,6 +28,7 @@ import subaccell1 from '../assets/events/livestreams/sub-accelerator.jpg';
 import subaccell2 from '../assets/events/livestreams/sub-accelerator.png';
 import disco1 from '../assets/events/livestreams/disco-api.jpg';
 import disco2 from '../assets/events/livestreams/disco-2.png';
+import atwcli from '../assets/events/livestreams/atw-cli.png';
 
 import cloudflare from '../assets/stack-tools/cloudflare.png';
 import bun from '../assets/stack-tools/bun.svg';
@@ -68,6 +69,7 @@ import ibexa from '../assets/stack-tools/ibexa.webp';
 import ansible from '../assets/stack-tools/ansible.png';
 import objectivec from '../assets/stack-tools/objective-c.png';
 import sqlite from '../assets/stack-tools/sqlite.png';
+
 export const StaticImages = {
     donthostjustcode,
     ampscriptapp,
@@ -137,4 +139,5 @@ export const StaticImages = {
     ansible,
     objectivec,
     sqlite,
+    atwcli,
 };

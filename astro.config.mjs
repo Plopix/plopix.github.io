@@ -7,6 +7,8 @@ import alpinejs from '@astrojs/alpinejs';
 
 import sitemap from '@astrojs/sitemap';
 
+import react from '@astrojs/react';
+
 export default defineConfig({
     vite: {
         plugins: [tailwindcss()],
@@ -14,5 +16,5 @@ export default defineConfig({
 
     site: 'https://sebastien.morel.me',
     trailingSlash: 'ignore',
-    integrations: [mdx(), alpinejs(), sitemap({})],
+    integrations: [mdx(), alpinejs(), sitemap({}), react()],
 });

@@ -7,7 +7,6 @@ let badges: Badge[] = [];
 
 export async function fetchBadges() {
     if (badges.length === 0) {
-        console.log('Fetching badges..');
         const sfConnect = await fetch('https://connect.symfony.com/profile/plopix');
         const html = await sfConnect.text();
         let $ = cheerio.load(html);
