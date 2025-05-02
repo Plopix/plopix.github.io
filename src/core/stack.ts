@@ -300,7 +300,7 @@ export const stacks: Stack[] = [
     {
         title: 'Living on the Edge',
         description:
-            'This is the fun stack—the cutting-edge tech I experiment with in my free time and, occasionally, at work.',
+            'This is the fun stack, the cutting-edge tech I experiment with in my free time and, occasionally, at work.',
         technologies: [Cloudflare, HonoJS, Bun, ReactRouterV7, Astro, Meilisearch],
     },
     {

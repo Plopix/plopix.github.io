@@ -15,6 +15,7 @@ import ActivityDiagram from '../components/activity-diagram.astro';
 const badges = shuffleArray(await fetchBadges());
 import { fetchGithubActivity } from '../core/activity/github';
 import { fetchChessComActivity } from '../core/activity/chess';
+import CliffhangerPush from '../components/cliffhanger-push.astro';
 const githubActivity = await fetchGithubActivity();
 const chessActivity = await fetchChessComActivity();
 ---
@@ -32,7 +33,7 @@ const chessActivity = await fetchChessComActivity();
                 <strong>deep focus on scalability</strong>, <strong>performance</strong>, <strong>DevOps</strong>, and <strong
                     >system architecture</strong
                 >. I thrive on <strong>optimizing systems</strong>, <strong>refining processes</strong>, and <strong
-                    >pushing the boundaries of technology—whether</strong
+                    >pushing the boundaries of technology whether</strong
                 > through clean architecture, continuous deployment, or high-performance solutions.
             </p>
             <p class="mt-4 text-neutral-500 dark:text-neutral-400 lg:text-pretty text-justify">
@@ -99,8 +100,14 @@ const chessActivity = await fetchChessComActivity();
             </div>
         </div>
     </section>
-
-    <MissivePush />
+    <section>
+        <div class="mx-auto max-w-4xl px-8 my-6">
+            <div class="flex flex-row gap-1">
+                <MissivePush />
+                <CliffhangerPush />
+            </div>
+        </div>
+    </section>
     <section>
         <div class="std-page-container">
             <h3 class="text-2xl font-medium tracking-tight text-neutral-900 dark:text-white sm:text-4xl">Some stats</h3>

@@ -22,9 +22,34 @@ export const upcomingTalks: Talk[] = [
 
 export const talks: Talk[] = [
     {
+        title: 'I got interviewed by the NextDev.fm team!',
+        description: 'They asked Grok to scrap my life and questions about my career, my work and my life.',
+        date: '2025-03-28',
+        images: [StaticImages.nextdevfm],
+        event: {
+            name: 'NextDev.fm',
+            url: 'https://nextdev.fm/',
+        },
+        location: 'Youtube Channel',
+        video: 'https://www.youtube.com/watch?v=A0jLC1yTqeM',
+    },
+    {
+        title: 'How to build a MCP Server',
+        description:
+            'We built a MCP server with tools to be able to list and register to an event from any MCP Client!',
+        date: '2025-03-23',
+        event: {
+            name: 'All Things Web',
+            url: 'https://www.youtube.com/@allthingsweb-dev',
+        },
+        location: 'Youtube Channel',
+        video: 'https://www.youtube.com/watch?v=VFNPyCWd-MQ',
+        images: [StaticImages.atwmcpserver],
+    },
+    {
         title: 'How to build a CLI using React and Bun!',
         description:
-            "Join us for a deep dive into building a CLI using React and Bun! In this livestream, we'll guide you through the setup process, explore the code organization and flow.",
+            "Deep dive into building a CLI using React and Bun! In this livestream, we'll guide you through the setup process, explore the code organization and flow.",
         date: '2025-03-02',
         event: {
             name: 'All Things Web',
@@ -159,7 +184,7 @@ export const talks: Talk[] = [
     {
         title: 'eZ Platform Cloud and eZ Launchpad',
         description:
-            "Learn what's involved in the process of launching a new web project—from starting with nothing to having a local development environment shared with your team using eZ Platform, Docker plus Platform.sh and more in just a few hours.",
+            "Learn what's involved in the process of launching a new web project from starting with nothing to having a local development environment shared with your team using eZ Platform, Docker plus Platform.sh and more in just a few hours.",
         date: '2018-06-20',
         event: {
             name: 'eZ Conference 2018',

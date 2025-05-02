@@ -69,6 +69,8 @@ import ibexa from '../assets/stack-tools/ibexa.webp';
 import ansible from '../assets/stack-tools/ansible.png';
 import objectivec from '../assets/stack-tools/objective-c.png';
 import sqlite from '../assets/stack-tools/sqlite.png';
+import atwmcpserver from '../assets/events/livestreams/mcp-server-atw.png';
+import nextdevfm from '../assets/events/livestreams/nextdevfm.png';
 
 export const StaticImages = {
     donthostjustcode,
@@ -140,4 +142,6 @@ export const StaticImages = {
     objectivec,
     sqlite,
     atwcli,
+    atwmcpserver,
+    nextdevfm,
 };

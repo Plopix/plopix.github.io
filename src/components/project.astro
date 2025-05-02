@@ -11,6 +11,7 @@ const {
     repositoryOrganization,
     isReleased,
     roles,
+    urlDocumentation,
     sponsors,
 } = Astro.props as Project;
 const badgeClass = 'max-h-[20px] object-contain block';
@@ -63,7 +64,7 @@ const badgeClass = 'max-h-[20px] object-contain block';
         </div>
         <div>
             <p class="font-semibold text-main-400 group-hover:text-main-400 duration-200">
-                {title}
+                <a href={urlDocumentation} target="_blank">{title}</a>
             </p>
             <p class="text-neutral-500 text-sm dark:text-neutral-400">
                 {baseline}

@@ -37,6 +37,20 @@ export const currentProjects: Project[] = [
         sponsors: [Crystallize],
         isReleased: true,
     },
+    {
+        title: 'CLIffhanger',
+        repositoryName: 'cliffhanger',
+        packagePlatform: 'github',
+        packagePlatformId: 'cliffhanger',
+        baseline: 'Scripts to MCP Server tool in an instant.',
+        description:
+            'A CLI that runs your scripts and exposes them as tools through a built-in, extensible MCP server.',
+        urlDocumentation: 'https://cliffhanger.dev',
+        roles: ['Creator', 'Maintainer'],
+        repositoryOrganization: PlopixOrg,
+        sponsors: [],
+        isReleased: true,
+    },
 ];
 
 export const legacyProjects: Project[] = [

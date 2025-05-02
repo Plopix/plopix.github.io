@@ -5,7 +5,7 @@ export type Project = {
         name: string;
         type: 'github' | 'gitlab';
     };
-    packagePlatform: string;
+    packagePlatform: 'github' | 'npm' | 'composer';
     packagePlatformId: string;
     baseline: string;
     description: string;
